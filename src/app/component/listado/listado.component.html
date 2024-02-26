@@ -1,0 +1,32 @@
+<div class="jumbotron">
+    <h2>Listado de Películas {{ agregada }}</h2>
+    <hr>
+
+    <ng-template #ningun>
+        <h4 *ngIf="pidiendo" class="alert alert-danger">Pidiendo datos...</h4>
+        <h4 *ngIf="!pidiendo" class="alert alert-danger">No se encontraron películas</h4>
+    </ng-template>
+
+    <div class="row row-cols-1 row-cols-md-3" *ngIf="peliculas.length; else ningun">
+        <div class="col mb-3" *ngFor="let pelicula of peliculas; index as i">
+            <div class="card">
+                <div class="m-auto">
+                    <button [disabled]="!pelicula.stock" class="btn btn-success my-2" (click)="agregarCarrito(pelicula.id)">Agregar al carrito</button>
+                </div>
+                <img [src]="pelicula.foto" height="700" class="card-img-top" alt="foto de {{ pelicula.titulo }}">
+                <div class="card-body">
+                    <br>
+                    <h3 class="card-title"><u>Película {{ i + 1 }}</u></h3>
+                    <br>
+                    <p>Título: <b>{{ pelicula.titulo }}</b></p>
+                    <p>Género: <i>{{ pelicula.genero }}</i></p>
+                    <p>Año: <i>{{ pelicula.year }}</i></p>
+                    <p>Precio: <i>{{ pelicula.precio }}</i></p>
+                    <p>Disponibles: <i>{{ calcularDisponibles(pelicula.stock, pelicula.id) }}</i></p>
+
+                    <a [href]="pelicula.foto" target="_blank" class="btn btn-primary mt-3">Detalles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

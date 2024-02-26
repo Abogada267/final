@@ -1,0 +1,47 @@
+<div class="jumbotron">
+    <h2>Register</h2>
+    <hr>
+
+    <form autocomplete="off" (ngSubmit)="enviar()">
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" id="email" class="form-control" [(ngModel)]="register.email" name="email">
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" class="form-control" [(ngModel)]="register.password" name="email">
+        </div>
+
+        <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" class="form-control" [(ngModel)]="register.nombre" name="email">
+        </div>
+
+        <div class="form-group">
+            <label for="direccion">Dirección</label>
+            <input type="text" id="direccion" class="form-control" [(ngModel)]="register.direccion" name="email">
+        </div>
+
+        <div class="form-group">
+            <label for="telefono">Teléfono</label>
+            <input type="text" id="telefono" class="form-control" [(ngModel)]="register.telefono" name="email">
+        </div>
+
+        <div class="form-group">
+            <label for="foto">URL Foto</label>
+            <input type="text" id="foto" class="form-control" [(ngModel)]="register.foto" name="email">
+        </div>
+
+        <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="admin" [(ngModel)]="register.isAdmin" name="isAdmin">
+            <label class="custom-control-label" for="admin">Es Admin?</label>
+        </div>
+
+        <button class="btn btn-success mr-4 mt-3">Register</button>
+        <a routerLink="/login" class="btn btn-warning mt-3">Ir a Login</a>
+
+    </form>
+
+</div>

@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-md navbar-dark"
+    [ngClass]="{'bg-dark':!logueado, 'bg-danger':logueado && isAdmin, 'bg-success':logueado && !isAdmin }">
+    <a class="navbar-brand">
+        <span *ngIf="!logueado">
+            Sign
+        </span>
+        <span *ngIf="logueado">
+            <button *ngIf="logueado" class="btn btn-warning mr-3" (click)="logout()">Logout</button>
+            Bienvenido <b>{{nombre}}</b>
+            <img class="ml-2" [src]="foto" width="50" alt="foto de {{nombre}}">
+        </span>
+    </a>
+
+    <button *ngIf="logueado" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav" *ngIf="logueado && isAdmin">
+            <li class="nav-item">
+                <a class="nav-link" routerLinkActive="active" routerLink="/alta">Alta</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLinkActive="active" routerLink="/alquiler">Alquiler</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav" *ngIf="logueado && !isAdmin">
+            <li class="nav-item">
+                <a class="nav-link" routerLinkActive="active" routerLink="/listado">Listado</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLinkActive="active" routerLink="/carrito">Carrito</a>
+            </li>
+        </ul>
+    </div>
+</nav>

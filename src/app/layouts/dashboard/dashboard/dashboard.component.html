@@ -1,0 +1,67 @@
+<mat-drawer-container class="dashboard-container" autosize>
+    <!-- SIDEBAR -->
+    <!-- SIDEBAR -->
+    <!-- SIDEBAR -->
+    <mat-drawer #drawer class="dashboard-sidebar" mode="side">
+      <mat-nav-list>
+        <a 
+        #homeLink="routerLinkActive" routerLinkActive="active"
+        [activated]="homeLink.isActive" 
+        routerLink="home"
+        mat-list-item
+        >Inicio</a>
+        <a 
+        #homeLink="routerLinkActive" routerLinkActive
+        [activated]="usersLink.isActive" 
+        routerLink="users"
+        mat-list-item
+        >Usuarios</a
+        >
+        <a 
+        #productsLink="routerLinkActive" routerLinkActive
+        [activated]="productsLink.isActive" 
+        routerLink="products"
+        mat-list-item
+        >Productos</a
+        >
+        <a (click)="logout()" mat-list-item>Cerrar sesion</a>
+      </mat-nav-list>
+    </mat-drawer>
+    <!-- SIDEBAR -->
+    <!-- SIDEBAR -->
+    <!-- SIDEBAR -->
+  
+    <!-- CONTENIDO -->
+    <!-- CONTENIDO -->
+    <div class="example-sidenav-content">
+      <!-- TOOLBAR -->
+      <!-- TOOLBAR -->
+      <!-- TOOLBAR -->
+      <mat-toolbar color="primary">
+        <button (click)="drawer.toggle()" mat-icon-button class="example-icon"
+          aria-label="Example icon-button with menu icon">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span>My App</span>
+        <span class="example-spacer"></span>
+        <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+          <mat-icon>favorite</mat-icon>
+        </button>
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+          <mat-icon>share</mat-icon>
+        </button>
+      </mat-toolbar>
+      <!-- TOOLBAR -->
+      <!-- TOOLBAR -->
+      <div class="p-3">
+        <router-outlet></router-outlet>
+        <!-- <app-rxjs-introduccion></app-rxjs-introduccion> -->
+        <!-- <app-rxjs-example></app-rxjs-example> -->
+        <!-- <app-pipes></app-pipes> -->
+        <!-- <app-users></app-users> -->
+        <!-- <app-categories></app-categories> -->
+      </div>
+    </div>
+    <!-- CONTENIDO -->
+    <!-- CONTENIDO -->
+  </mat-drawer-container>

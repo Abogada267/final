@@ -1,0 +1,12 @@
+.jumbotron {
+    background-color: rgb(18, 105, 18);
+    color: white;
+}
+
+hr {
+    background-color: #eee;
+}
+
+.card {
+    color: #444;
+}

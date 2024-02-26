@@ -1,0 +1,66 @@
+<div class="jumbotron">
+    <h2>Peliculas en Alquiler</h2>
+    <hr>
+
+    <ng-template #ningun>
+        <h4 *ngIf="pidiendo" class="alert alert-danger">Pidiendo datos...</h4>
+        <h4 *ngIf="!pidiendo" class="alert alert-danger">No hay alquileres</h4>
+    </ng-template>
+
+    <div *ngIf="carrito.length; else ningun">
+
+        <div class="table-responsive">
+            <table class="table table-dark">
+                <tr>
+                    <!-- <th>ID</th> -->
+                    <th>Usuario</th>
+                    <th>Carrito</th>
+                </tr>
+                <tr *ngFor="let item of carrito; index as i">
+                    <!-- <td>{{ item.id }}</td> -->
+                    <td>{{ item.usuario.email }}</td>
+                    <!-- <td><pre>{{ item.carrito | json }}</pre></td> -->
+                    <td>
+                        <table class="table table-light">
+                            <tr>
+                                <th>titulo</th>
+                                <th>genero</th>
+                                <th>año</th>
+                                <th>precio</th>
+                                <th>dias</th>
+                                <th>subtotal</th>
+                                <th>foto</th>
+                            </tr>
+                            <tr *ngFor="let peli of item.carrito">
+                                <td>{{ peli.pelicula.titulo }}</td>
+                                <td>{{ peli.pelicula.genero }}</td>
+                                <td>{{ peli.pelicula.year }}</td>
+                                <td>${{ peli.pelicula.precio }}</td>
+                                <td>{{ peli.dias }}</td>
+                                <td>${{ calcularParcial(peli) }}</td>
+                                <td>
+                                    <img height="50" [src]="peli.pelicula.foto" alt="foto de {{peli.pelicula.titulo}}">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th>TOTAL</th>
+                                <th></th>
+                                <th>${{ calcularTotal(item.carrito) }}</th>
+                                <th></th>                            
+                            </tr>                                
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <!-- <th></th> -->
+                    <th>TOTAL</th>
+                    <th>${{ calcularRecaudacion(carrito) }}</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+

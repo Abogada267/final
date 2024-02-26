@@ -1,0 +1,16 @@
+.jumbotron {
+    background-color: purple;
+    color: white;
+}
+
+hr {
+    background-color: #eee;
+}
+
+.table th, .table td {
+    vertical-align: middle;
+}
+
+.table th {
+    font-size: 1.2em;
+}

@@ -1,0 +1,56 @@
+<div class="jumbotron">
+    <h2>Carrito de alquiler de {{ usuario.nombre }} {{ enviado }}</h2>
+    <hr>
+
+    <ng-template #ningun>
+        <h4 class="alert alert-danger">Carrito vacío</h4>
+    </ng-template>
+
+    <div *ngIf="carrito.length; else ningun">
+
+        <button class="btn btn-danger my-3 float-left" (click)="enviar()">Borrar Todo</button>
+        <button class="btn btn-info my-3 float-right" (click)="enviar()">Pedir</button>
+
+        <div class="table-responsive">
+            <table class="table table-dark">
+                <tr>
+                    <!-- <th>ID</th> -->
+                    <th>Título</th>
+                    <th>Género</th>
+                    <th>Año</th>
+                    <th>Precio</th>
+                    <th>Dias</th>
+                    <th>Total</th>
+                    <th>Foto</th>
+                    <th>Acción</th>
+                </tr>
+                <tr *ngFor="let item of carrito; index as i">
+                    <!-- <td>{{ i }}</td> -->
+                    <td>{{ item.pelicula.titulo }}</td>
+                    <td>{{ item.pelicula.genero }}</td>
+                    <td>{{ item.pelicula.year }}</td>
+                    <td>{{ item.pelicula.precio }}</td>
+                    <td> <input type="number" style="width: 40px;" [(ngModel)]="item.dias"></td>
+                    <td>{{ calcularParcial(item) }}</td>
+                    <td>
+                        <img [src]="item.pelicula.foto" width="50" alt="foto de {{ item.pelicula.titulo }}">
+                    </td>
+                    <td>
+                        <button class="btn btn-danger" (click)="borrarItemCarrito(i)">Borrar</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th>TOTAL</th>
+                    <th></th>
+                    <th>{{ calcularTotal(carrito) }}</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+

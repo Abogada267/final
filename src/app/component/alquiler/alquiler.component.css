@@ -1,0 +1,20 @@
+.jumbotron {
+    background-color: pink;
+    color: brown;
+}
+
+hr {
+    background-color: #333;
+}
+
+.table th, .table td {
+    vertical-align: middle;
+}
+
+.table th {
+    font-size: 1.2em;
+}
+
+pre {
+    color: white;
+}
