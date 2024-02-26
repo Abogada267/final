@@ -1,3 +1,4 @@
+import { Injectable } from "@angular/core";
 import { Routes } from "@angular/router";
 import { AlquilerComponent } from "../component/alquiler/alquiler.component";
 import { AltaComponent } from "../component/alta/alta.component";
@@ -8,7 +9,6 @@ import { ListadoComponent } from "../component/listado/listado.component";
 import { LoginComponent } from "../component/login/login.component";
 import { RegisterComponent } from "../component/register/register.component";
 import { WarningComponent } from "../component/warning/warning.component";
-import { Injectable } from "@angular/core";
 import { DashboardComponent } from "../layouts/dashboard/dashboard/dashboard.component";
 import { HomeComponent } from "../layouts/dashboard/pages/home/home.component";
 
@@ -31,7 +31,6 @@ export class RoutesService {
       component: DashboardComponent,
       children: [
         { path: 'home', component: HomeComponent },
-       
       ],
     },
     { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -42,6 +41,3 @@ export class RoutesService {
     return this.routes;
   }
 }
-
-
-
