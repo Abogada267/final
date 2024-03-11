@@ -1,27 +1,34 @@
 import { Component, OnInit } from '@angular/core';
+import { AlumnosService } from '../alumnos.service';
 import { Alumnos } from '../alumnos';
+import { MessageService } from '../message.service';
+
 
 @Component({
   selector: 'app-alumnos',
   templateUrl: './alumnos.component.html',
-  styleUrl: './alumnos.component.scss',
+  styleUrls: ['./alumnos.component.scss'],
 })
   
 export class AlumnosComponent implements OnInit{
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
+  selectedAlumnos: Alumnos | undefined;
+
+  selectalumnos: Alumnos | undefined;
+  alumnos: Alumnos[]= [];
+
+  constructor(private alumnosService: AlumnosService, private messageService: MessageService) { }
+
+  ngOnInit() {
+    this.getAlumnos();
   }
 
-  title = 'Detalles de Alumnos';
-  alumnos: Alumnos[] = [
-    { id: 1, name: 'Nombre1', edad: 20 },
-    { id: 2, name: 'Nombre2', edad: 22 },
-    
-  ];
+  onSelect(alumnos: Alumnos): void {
+    this.selectedAlumnos = alumnos;
+    this.messageService.add(`AlumnosComponent: Selected alumnos id=${alumnos.id}`);
+  }
 
-  selectedAlumno: Alumnos | undefined;
-
-  onSelect(alumno: Alumnos): void {
-    this.selectedAlumno = alumno;
+  getAlumnos(): void {
+    this.alumnosService.getAlumnos()
+        .subscribe(alumnos => this.alumnos = alumnos);
   }
 }

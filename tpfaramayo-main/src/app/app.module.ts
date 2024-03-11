@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientInMemoryWebApiModule, InMemoryDbService } from 'angular-in-memory-web-api';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { MessagesComponent } from '../app/massages/massages.component'; // Corregí la ruta aquí
+import { MessagesComponent } from './massages/massages.component'; // Corregí la ruta aquí
 import { AlumnosDetailComponent } from './alumnos-detail/alumnos-detail/alumnos-detail.component';
 import { AlumnosSearchComponent } from './alumnos-search/alumnos-search.component';
 import { AlumnosComponent } from './alumnos/alumnos.component';
