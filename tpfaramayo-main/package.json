@@ -2,8 +2,8 @@
   "name": "trabajofinalaramayo",
   "version": "0.0.0",
   "scripts": {
-       "type": "module",
-     "ng": "ng",
+    "type": "module",
+    "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build",
