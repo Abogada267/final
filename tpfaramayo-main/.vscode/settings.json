@@ -1,0 +1,14 @@
+{
+    "git.ignoreLimitWarning": true,
+    "cSpell.words": [
+        "",
+        "Alumno",
+        "alumnos",
+        "Detalles",
+        "edad",
+        "nguniversal",
+        "trabajofinalaramayo",
+        "undefinedalumnos"
+    ],
+    "livePreview.defaultPreviewPath": "/src/app/alumnos/alumnos.component.html"
+}

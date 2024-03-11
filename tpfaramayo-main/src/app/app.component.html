@@ -1,0 +1,22 @@
+<h2>{{ selectedAlumno?.name?.toUpperCase() }} Details</h2>
+<nav>
+  <a routerLink="/dashboard">Dashboard</a>
+  <a routerLink="/alumnos">Alumnos</a>
+</nav>
+<router-outlet></router-outlet>
+<app-messages></app-messages>
+<div *ngIf="selectedAlumno">
+  <div><span>id: </span>{{ selectedAlumno.id }}</div>
+  <div><span>name: </span>{{ selectedAlumno.name }}</div>
+
+  <div>
+    <label>name:
+      <input [(ngModel)]="selectedAlumno.name" placeholder="name" />
+    </label>
+  </div>
+</div>
+<ul>
+  <li *ngFor="let Alumnos of alumnos" (click)="onSelect(alumno)">
+    {{ alumno.name }} - {{ alumno.edad }} años
+  </li>
+</ul>

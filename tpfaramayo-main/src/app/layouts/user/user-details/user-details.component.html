@@ -1,0 +1,20 @@
+<div class="user-details-container">
+    <h2>Detalles del Usuario</h2>
+    <div>
+        <strong>ID:</strong> {{ userDetails.id }}
+    </div>
+    <div>
+        <strong>Nombre:</strong> {{ userDetails.name }}
+    </div>
+    <div>
+        <strong>Email:</strong> {{ userDetails.email }}
+    </div>
+    <div *ngIf="userDetails.activityHistory && userDetails.activityHistory.length > 0">
+        <h3>Historial de Actividad</h3>
+        <ul>
+            <li *ngFor="let activity of userDetails.activityHistory">
+                <strong>Fecha:</strong> {{ activity.date }} - <strong>Acción:</strong> {{ activity.action }}
+            </li>
+        </ul>
+    </div>
+</div>
