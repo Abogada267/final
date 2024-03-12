@@ -7,12 +7,13 @@ import { MessageService } from './message.service';
 
 @Injectable({ providedIn: 'root' })
 export class AlumnosService {
-
   private alumnosUrl = 'api/alumnos';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
+  addAlumnos: any;
+  deleteAlumnos: any;
 
   constructor(
     private http: HttpClient,
@@ -23,7 +24,7 @@ export class AlumnosService {
     return this.http.get<Alumnos[]>(this.alumnosUrl)
       .pipe(
         tap(_ => this.log('fetched alumnos')),
-        catchError(this.handleError<Alumnos[]>('getAlumnos', []))
+        
       );
   }
 
@@ -36,7 +37,7 @@ export class AlumnosService {
           const outcome = h ? 'fetched' : 'did not find';
           this.log(`${outcome} alumnos id=${id}`);
         }),
-        catchError(this.handleError<Alumnos>(`getAlumnos id=${id}`))
+     
       );
   }
 
@@ -44,7 +45,7 @@ export class AlumnosService {
     const url = `${this.alumnosUrl}/${id}`;
     return this.http.get<Alumnos>(url).pipe(
       tap(_ => this.log(`fetched alumno id=${id}`)),
-      catchError(this.handleError<Alumnos>(`getAlumno id=${id}`))
+  
     );
   }
 
@@ -56,14 +57,14 @@ export class AlumnosService {
       tap(x => x.length ?
          this.log(`found alumnos matching "${term}"`) :
          this.log(`no alumnos matching "${term}"`)),
-      catchError(this.handleError<Alumnos[]>('searchAlumnos', []))
+      
     );
   }
 
   addAlumno(alumno: Alumnos): Observable<Alumnos> {
     return this.http.post<Alumnos>(this.alumnosUrl, alumno, this.httpOptions).pipe(
       tap((newAlumno: Alumnos) => this.log(`added alumno w/ id=${newAlumno.id}`)),
-      catchError(this.handleError<Alumnos>('addAlumno'))
+      catchError((error: any) => this.handleError<Alumnos>('addAlumno', error))
     );
   }
 
@@ -73,27 +74,24 @@ export class AlumnosService {
 
     return this.http.delete<Alumnos>(url, this.httpOptions).pipe(
       tap(_ => this.log(`deleted alumno id=${id}`)),
-      catchError(this.handleError<Alumnos>('deleteAlumno'))
+      catchError((error: any) => this.handleError<Alumnos>('deleteAlumno', error))
     );
   }
 
   updateAlumno(alumno: Alumnos): Observable<any> {
     return this.http.put(this.alumnosUrl, alumno, this.httpOptions).pipe(
       tap(_ => this.log(`updated alumno id=${alumno.id}`)),
-      catchError(this.handleError<any>('updateAlumno'))
+      catchError((error: any) => this.handleError<any>('updateAlumno', error))
     );
   }
 
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-      console.error(error);
-      this.log(`${operation} failed: ${error.message}`);
-      return of(result as T);
-    };
+  private handleError<T>(operation = 'operation', error: any): Observable<T> {
+    console.error(error);
+    this.log(`${operation} failed: ${error.message}`);
+    return of(error as T);
   }
 
   private log(message: string) {
     this.messageService.add(`AlumnosService: ${message}`);
   }
 }
-

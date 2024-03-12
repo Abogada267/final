@@ -15,6 +15,7 @@ import { AlumnosService } from '../alumnos.service';
 export class AlumnosSearchComponent implements OnInit {
   alumnos$!: Observable<Alumnos[]>;
   private searchTerms = new Subject<string>();
+alumnos: any;
 
   constructor(private AlumnosService: AlumnosService) {}
 

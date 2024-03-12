@@ -17,4 +17,6 @@ export class AppComponent {
 
   title = 'EstudioJuridicoMalvinaAramayo&Capacitaciones';
 onSelect: any;
+alumnos: any;
+Alumnos: any;
 }
